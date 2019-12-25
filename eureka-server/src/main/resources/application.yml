@@ -1,0 +1,21 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #通过eureka.client.registerWithEureka:false和fetchRegistry:false
+    #来表明自己是一个eureka server
+    registerWithEureka: false
+    fetchRegistry: false
+
+    serverUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+spring:
+  #使用spring.profiles.active 来使用其他application.yml文件
+  #profiles:
+    #active: peer1
+  application:
+    name: eurka-server
